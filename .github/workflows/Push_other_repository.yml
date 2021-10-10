@@ -1,0 +1,34 @@
+name: Pushes to another repository
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      # actions/checkout@v2 を利用して作業ディレクトリ
+      - uses: actions/checkout@v2
+      
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          #プッシュするリポジトリ階層
+          source-directory: 'Packages'
+          # ユーザー名
+          destination-github-username: 'little-hoge'
+          # リポジトリパス
+          destination-repository-name: 'test'
+          #アドレス
+          user-email: little500ml@gmail.com
+          # コメント
+          commit-message: pushtest
+          target-branch: main
+
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
