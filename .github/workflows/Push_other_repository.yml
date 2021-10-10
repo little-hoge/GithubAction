@@ -10,7 +10,10 @@ jobs:
     steps:
       # actions/checkout@v2 を利用して作業ディレクトリ
       - uses: actions/checkout@v2
-      
+      # 使用Brunch変更
+        with:
+          ref: gh-pages
+
       - name: Pushes to another repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
@@ -18,16 +21,17 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          #プッシュするリポジトリ階層
-          source-directory: 'Packages'
+          #送り元ポジトリパス
+          source-directory: 'WebGL/WebGL'
           # ユーザー名
           destination-github-username: 'little-hoge'
-          # リポジトリパス
+          # 送り先リポジトリパス
           destination-repository-name: 'test'
           #アドレス
           user-email: little500ml@gmail.com
           # コメント
           commit-message: pushtest
+          # 送り先リBrunch
           target-branch: main
 
       - name: Test get variable exported by push-to-another-repository
