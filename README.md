@@ -1,3 +1,10 @@
+# なにができるの？
+unity Webビルド＋別リポジトリにアップロード
+
+非公開環境でもActionsが動くので、無料会員の場合
+アップロード先を公開にすることでGitHubPagesを設定して
+アプリのみ公開が簡単にできる。
+
 # GithubAction
 - activation
 - test
