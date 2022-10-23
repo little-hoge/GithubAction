@@ -1,0 +1,12 @@
+site_name: VPPメモ
+
+# ページ
+nav:
+- はじめに: index.md
+- 環境構築: 環境構築.md
+
+# テーマ
+theme:
+  name: material
+  palette:
+    primary: cyan

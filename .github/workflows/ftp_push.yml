@@ -1,0 +1,25 @@
+name: ftp push
+
+on:
+  workflow_dispatch: {}
+  # workflow_run: # 自動発火用トリガ
+  #   workflows:
+  #     - mkdocs build
+  #   types: 
+  #     - completed                                       # 完了時に実行
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List output files
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages                                 # 使用ブランチ指定
+          run: ls                                       # ファイルリストを表示
+
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2       # サーバーにDeploy
+        with:
+          server: ${{ secrets.FTP_SERVER }}             # FTPサーバーのURLを設定
+          username: ${{ secrets.FTP_USERNAME }}         # FTPのユーザー名を設定
+          password: ${{ secrets.FTP_PASSWORD }}         # FTPのパスワードを設定

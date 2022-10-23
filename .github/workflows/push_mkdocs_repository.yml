@@ -1,7 +1,12 @@
-name: Push another repository
+name: Push mkdocs repository
 
 on:
   workflow_dispatch: {}
+  # workflow_run: # 自動発火用トリガ
+  #   workflows:
+  #     - mkdocs build
+  #   types: 
+  #     - completed                                       # 完了時に実行
 
 jobs:
   build:
@@ -10,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: gh-pages           # 使用ブランチ指定
+          ref: gh-pages                             # 使用ブランチ指定
 
       - name: Pushes to another repository
         id: push_directory
@@ -18,10 +23,11 @@ jobs:
 
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+
         with:
-          source-directory: 'WebGL/WebGL'            # 送り元リポジトリパス
+          source-directory: './'                     # 送り元リポジトリパス
           destination-github-username: 'little-hoge' # ユーザー名
-          destination-repository-name: 'test'        # 送り先リポジトリパス
+          destination-repository-name: 'mkdocs'      # 送り先リポジトリパス
           user-email: little500ml@gmail.com          # アドレス
           target-branch: main                        # 送り先Brunch
 

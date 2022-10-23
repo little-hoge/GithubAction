@@ -1,24 +1,48 @@
-# なにができるの？
-unity Webビルド＋別リポジトリにアップロード
+# Actions
 
-非公開環境でもActionsが動くので、無料会員の場合  
-アップロード先を公開にすることでGitHubPagesを設定して  
-アプリのみ公開が簡単にできる。
-
-# GithubAction
+## UnityActions
 - activation
 - test
 - webgl_build
 - windows_build
 
-参考：[GameCI で Unity の CI 環境を GitHub Actions で構築する](https://zenn.dev/nikaera/articles/unity-gameci-github-actions)
+### 参考
+[GameCI で Unity の CI 環境を GitHub Actions で構築する](https://zenn.dev/nikaera/articles/unity-gameci-github-actions)
 
 
-- Push_other_repository
-
-参考：[github-action-push-to-another-repository
+- push_mkdocs_repository
+### 参考
+[github-action-push-to-another-repository
 ](https://github.com/cpina/github-action-push-to-another-repository)
 
 
-ドキュメント  
+## mkdocs
+- ftp_push
+- mkdocs_build
+- push_mkdocs_repository
+  
+### 使い方
+- 前提条件
+  - Pythonインストール済み
+  - pipインストール済み
+  - VScodeインストール済み
+  
+- mkdocs インストール
+```
+    pip install mkdocs-material
+```
+- サーバー起動
+```
+    mkdocs serve
+```
+- サーバー終了
+```
+    Ctrl + C
+```
+
+### 参考
+[github actionsを用いたFTP自動デプロイ](https://zenn.dev/hirof1990/articles/2f8eeab56b8637)
+
+
+### ドキュメント
 [GitHub Actions](https://docs.github.com/ja/actions)
