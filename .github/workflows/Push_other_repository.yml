@@ -17,7 +17,9 @@ jobs:
         uses: cpina/github-action-push-to-another-repository@main
 
         env:
+          # API_TOKEN_GITHUB：Settings→Developer settings→Personal access tokens→Tokens
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+       
         with:
           source-directory: 'WebGL/WebGL'            # 送り元リポジトリパス
           destination-github-username: 'little-hoge' # ユーザー名
